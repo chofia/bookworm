@@ -1,0 +1,63 @@
+  <div class="menu-btn">
+    <i class="fas fa-plus"></i>
+  </div><!--./ menu-btn end-->
+
+  <header>
+    <h1>Bookworm.</h1>
+  </header>
+
+  <!--Main Sections-->  
+  <div class="main">
+    
+    <br>
+    <div class="container">
+        <h1>Add Books</h1>
+
+        <p class="text-center">
+            Somtimes people lose track of the books that they want to read. 
+            This app is made to make book tracking simple!
+          </p>
+          <p class="text-center">
+            Use the form below to get started then head over to manage books in the link below to view and make changes to your book list.
+          </p>
+    <br>
+    </div>
+      
+    <div class="container">
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <form>
+            <div class="form-row">
+              <div class="col-md-4">
+                  <input type="text" name="Hamlet" id="title" [(ngModel)]="newBookworm.title" placeholder="Title" class="form-control">
+                </div>
+              <div class="col-md-7">
+                  <input type="text" name="Williams Shakespear" id="author" [(ngModel)]="newBookworm.author" placeholder="author"
+                  class="form-control" id="author">
+              </div>
+              <div class="col-md-1">
+                <button type="submit" class="btn btn-primary" (click)="create()">Add</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+    
+      <br />
+    
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <div class="mymeans" *ngIf="mymeansList">
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+
+      <p>Note: View <a routerLink="/bookworm">Manage Books</a></p>
+    </div><!--conainter end-->
+  </div> <!--./ main class ends-->
+
+  

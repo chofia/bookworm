@@ -1,0 +1,67 @@
+<div class="container page-title">
+  <div class="row">
+    <h1>Manage books</h1>
+  </div>
+
+  <br />
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 ">
+
+      <div class="bookworms " *ngIf="bookwormsList">
+        <table class="table table-striped table-light ">
+          <thead class="h">
+            <tr class="h">
+              <th class="h">Title</th>
+              <th class="h">Author</th>
+              <th class="h">Date</th>
+              <th class="h">Status</th>
+              <th class="h">Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bookworm" (dblclick)="editbookworm(bookworm)" *ngFor="let bookworm of bookwormsList">
+
+              <ng-container *ngIf="!editBookworms.includes(bookworm); else editTD">
+                <td>{{bookworm.title}}</td>
+                <td>{{bookworm.author}}</td>
+                <td>{{bookworm.date | date}}</td>
+                <td>{{bookworm.status}}</td>
+              </ng-container>
+
+              <ng-template #editTD>
+                <td><input type="text" name="title" id="title" (keypress)="submitBookworm($event, bookworm)" [(ngModel)]="bookworm.title"
+                    placeholder="Title" class="form-control"></td>
+                <td><input type="text" name="author" id="author" (keypress)="submitBookworm($event, bookworm)"
+                    [(ngModel)]="bookworm.author" placeholder="author" class="form-control"></td>
+                <td>{{bookworm.date | date}}</td>
+                <td>
+                  <input type="text" name="status" id="status" (keypress)="submitBookworm($event, bookworm)" [(ngModel)]="bookworm.status"
+                    placeholder="Status" class="form-control">
+                </td>
+              </ng-template>
+
+              <td class="o">
+                <button class="btn btn-success" (click)="doneBookworm(bookworm)">
+                  <i class="fa fa-check"></i>
+                </button> &nbsp;
+                <button class="btn btn-primary" (click)="editBookworm(bookworm)">
+                  <i class="fa fa-pencil"></i>
+                </button> &nbsp;
+                <button class="btn btn-danger" (click)="deleteBookworm(bookworm)">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+
+  </div>
+</div>
